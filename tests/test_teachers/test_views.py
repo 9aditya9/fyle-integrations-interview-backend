@@ -120,7 +120,7 @@ def test_grade_invalid_state_teacher_1(api_client, teacher_1):
     response = api_client.patch(
         reverse('teachers-assignments'),
         data=json.dumps({
-            'id': 2,
+            'id': 4,
             'student': 2
         }),
         HTTP_X_Principal=teacher_1,
@@ -159,7 +159,7 @@ def test_grade_assignment_teacher_2(api_client, teacher_2):
     response = api_client.patch(
         reverse('teachers-assignments'),
         data=json.dumps({
-            'id': 3,
+            'id': 9,
             'grade': grade
         }),
         HTTP_X_Principal=teacher_2,
@@ -172,7 +172,7 @@ def test_grade_assignment_teacher_2(api_client, teacher_2):
 
     assert assignment['content'] is not None
     assert assignment['state'] == 'GRADED'
-    assert assignment['student'] == 1
+    assert assignment['student'] == 2
     assert assignment['teacher'] == 2
     assert assignment['grade'] == grade
     assert assignment['id'] is not None
